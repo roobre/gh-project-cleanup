@@ -1,0 +1,4 @@
+# Project path
+newrelic/31:
+  Done: # Column matches partially
+    older_than: 2 months # Format must be understandable by https://pypi.org/project/durations-nlp/
