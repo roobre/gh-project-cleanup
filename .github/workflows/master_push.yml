@@ -15,6 +15,7 @@ jobs:
         with:
           username: roobre
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - run: docker push roobre/gh-project-cleanup
 
   self-test:
     needs: [ release ]
