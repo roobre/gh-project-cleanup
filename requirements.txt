@@ -1,4 +1,3 @@
 PyYAML
 PyGithub
-coverage
-durations-nlp
+durations_nlp

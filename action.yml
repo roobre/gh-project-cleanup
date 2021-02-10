@@ -12,5 +12,7 @@ runs:
       shell: bash
       run: |
         echo $INPUT_CONFIG > projects.yml
+    - run: pip3 install -r requirements.txt
+      shell: bash
     - run: ./ghp-cleanup.py projects.yml
       shell: bash
