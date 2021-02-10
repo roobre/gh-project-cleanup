@@ -1,0 +1,16 @@
+name: GH Project cleanup action
+description: Archive old cards from Github projects
+inputs:
+  config:
+    description: YAML-formatted config for gh-project-cleanup
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Write config from inputs
+      shell: bash
+      run: |
+        echo $INPUT_CONFIG > projects.yml
+    - run: ./ghp-cleanup.py projects.yml
+      shell: bash

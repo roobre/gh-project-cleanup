@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  self-test:
+    name: Example and self-test job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          config: |
+            # Project path
+            roobre/1:
+              Done: # Column matches partially
+                older_than: 2 months # Format must be understandable by https://pypi.org/project/durations-nlp/

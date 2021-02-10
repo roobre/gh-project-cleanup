@@ -49,7 +49,7 @@ def main():
         sys.exit(2)
 
     ghtoken = os.environ.get('GITHUB_TOKEN')
-    if ghtoken == "":
+    if ghtoken is None or ghtoken == "":
         print("Could not read $GITHUB_TOKEN")
         sys.exit(3)
 
@@ -57,7 +57,14 @@ def main():
 
     for board in config:
         orgproject = board.split('/')
-        org = gh.get_organization(orgproject[0])
+        try:
+            org = gh.get_organization(orgproject[0])
+        except Exception:
+            try:
+                org = gh.get_user(orgproject[0])
+            except Exception:
+                print(f"Couldn't find user or org '{orgproject[0]}'")
+                return 1
 
         project = None
         for p in org.get_projects():
