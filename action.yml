@@ -11,8 +11,11 @@ runs:
     - name: Write config from inputs
       shell: bash
       run: |
-        echo $INPUT_CONFIG > projects.yml
-    - run: pip3 install -r requirements.txt
+        echo $INPUT_CONFIG | tee projects.yml
+    - name: Install dependencies
+      run: |
+        apt install python3-setuptools
+        pip3 install -r requirements.txt
       shell: bash
     - run: ./ghp-cleanup.py projects.yml
       shell: bash
