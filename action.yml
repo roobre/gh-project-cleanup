@@ -4,18 +4,13 @@ inputs:
   config:
     description: YAML-formatted config for gh-project-cleanup
     required: true
+  github_token:
+    description: Github token with enough permissions to work on the dashboard
+    required: true
 
 runs:
-  using: "composite"
-  steps:
-    - name: Write config from inputs
-      shell: bash
-      run: |
-        echo $INPUT_CONFIG | tee projects.yml
-    - name: Install dependencies
-      run: |
-        apt install python3-setuptools
-        pip3 install -r requirements.txt
-      shell: bash
-    - run: ./ghp-cleanup.py projects.yml
-      shell: bash
+  using: docker
+  image: roobre/gh-project-cleanup
+  env:
+    CONFIG: ${{ inputs.config }}
+    GITHUB_TOKEN: ${{ inputs.github_token }}
