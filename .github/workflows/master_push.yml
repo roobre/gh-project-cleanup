@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ACTUAL_TOKEN }}
           config: |
             # Project path
             roobre/1:
