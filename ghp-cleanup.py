@@ -33,7 +33,7 @@ def clean(project: Project, rules):
         archived = 0
         for card in cards:
             if datetime.now() - card.updated_at > max_age:
-                card.update(archived=True)
+                card.edit(archived=True)
                 archived += 1
 
         print(f"Archived {archived} cards in {project.name}/{target_col.name}")
