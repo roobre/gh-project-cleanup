@@ -10,7 +10,7 @@ inputs:
 
 runs:
   using: docker
-  image: roobre/gh-project-cleanup
+  image: docker://roobre/gh-project-cleanup
   env:
     CONFIG: ${{ inputs.config }}
     GITHUB_TOKEN: ${{ inputs.github_token }}

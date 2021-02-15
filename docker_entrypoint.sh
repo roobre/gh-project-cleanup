@@ -9,4 +9,4 @@ if [ ! -e projects.yml ]; then
     exit 1
 fi
 
-./ghp-cleanup.py projects.yml
+/ghp-cleanup/ghp-cleanup.py projects.yml
